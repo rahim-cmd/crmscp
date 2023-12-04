@@ -4,32 +4,33 @@ include('sidebar.php');
 ?>
 <div class="container">
     <div id="adduser">
-        <form method="post" action="<?php echo base_url('adduser/newuser')?>">
+        <form method="post" action="<?php echo base_url('adduser')?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                <input type="email" class="form-control" name="email" id="email" autocomplete="off" aria-describedby="emailHelp"
                     placeholder="Enter email">
+                    <span class="text-danger"><?php echo form_error('email');?></span>
                 
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="password" autocomplete="off" placeholder="Password">
+                <span class="text-danger"><?php echo form_error('password');?></span>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Name</label>
-                <input type="text" class="form-control" name="name" id="last_name" placeholder="Last Name">
+                <input type="text" class="form-control" name="name" id="last_name" autocomplete="off" placeholder="Last Name">
+                <span class="text-danger"><?php echo form_error('name');?></span>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
-                <input type="text" class="form-control" name="role" id="org" placeholder="Organisation Name">
+                <input type="text" class="form-control" name="role" id="org" autocomplete="off" placeholder="Organisation Name">
+                <span class="text-danger"><?php echo form_error('role');?></span>
             </div>
+           
             <div class="form-group">
-                <label for="role">Time Stamp</label>
-                <input type="text" class="form-control" name="cutime" id="role" placeholder="Position">
-            </div>
-            <div class="form-group">
-                <input type="submit" name="submit" class=" form-control btn btn-primary" value="Add User">
+                <button type="submit" name="submit" class=" form-control btn btn-primary">Add User</button>
             </div>
         </form>
     </div>

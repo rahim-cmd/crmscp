@@ -22,16 +22,7 @@ class Userlist extends CI_Model {
         $query=$this->db->get('users');
         return $query->result();
     }
-    public function insert_entry()
-    {
-            $this->email    = $_POST['email']; // to insert data into invoice user table
-            $this->password  = $_POST['password'];
-            $this->name  = $_POST['name'];
-            $this->admin  = $_POST['role'];
-            $this->cutime = date('Y-m-d h:i:s');
-            $this->db->insert('users', $this);
-            redirect(base_url().'adduser/showuser');
-    }
+    
 
     public function edit_entry($id)
     {

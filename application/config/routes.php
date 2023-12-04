@@ -73,7 +73,7 @@ $route['delpart/(:any)']="parts/deleteparts/$1";
 
 // users related routes
 $route['showuser']="users/showuser";
-$route['adduser']="users";
+$route['adduser']="users/newuser";
 $route['showallusers']="users/showallusers";
 $route['users/update_entry/(:any)']="users/edituser/$1";
 $route['users/update_user/(:any)']="users/updateuser/$1";

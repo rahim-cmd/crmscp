@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('DIRECT ACCESS PROHIBITED');
 class Parts extends CI_Controller
 {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+    }    
     public function index()
     {
         $this->load->view('partform');
@@ -11,15 +16,26 @@ class Parts extends CI_Controller
 
     public function addPart()
     {
-        $data=array(
-            'p_name'=>$this->input->post('pname'),
-            'p_qty'=>$this->input->post('pqty'),
-            'price'=>$this->input->post('price'),
-            'p_trim'=>$this->input->post('ptrim'),
-        );
-        $this->db->insert('inventory',$data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success">Record has been saved successfully.</div>');
-		redirect('showallparts','refresh');
+                
+        $this->form_validation->set_rules('pname','Part Name','required');
+        $this->form_validation->set_rules('pqty','Part Quantity','required');
+        $this->form_validation->set_rules('price','Part Price','required');
+        if($this->form_validation->run())
+        {
+            $data=array(
+                'p_name'=>$this->input->post('pname'),
+                'p_qty'=>$this->input->post('pqty'),
+                'price'=>$this->input->post('price'),
+                'p_trim'=>$this->input->post('ptrim'),
+            );
+            $this->db->insert('inventory',$data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Record has been saved successfully.</div>');
+            redirect('showallparts','refresh');
+        }else{
+            
+            $this->load->view('partform');
+            
+        }
     }
     public function showparts()
     {

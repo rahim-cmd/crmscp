@@ -2,14 +2,38 @@
 defined('BASEPATH') OR exit('DIRECT ACCESS PROHIBITED');
 
 class Users extends CI_Controller{
+    
+    function __construct() {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+    }    
+    
     public function index(){
         $this->load->view('add_user');
     }
 
     public function newuser(){
-        $this->load->model('userlist');
-        $this->userlist->insert_entry();
-        return true;
+        $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('password','Password','required|min[6]');
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('role','Role','required');
+        if($this->form_validation->run())
+        {
+            $data=array(
+                'email'=>$this->input->post('email'),
+                'password'=>$this->input->post('password'),
+                'name'=>$this->input->post('name'),
+                'admin'=>$this->input->post('role'),
+                'cutime'=>$this->cutime = date('Y-m-d h:i:s')
+            );
+
+                $this->db->insert('users', $data);
+                redirect('showuser','refresh');
+            
+        }else{
+            $this->load->view('add_user');
+        }
     }
 
     public function showuser()
