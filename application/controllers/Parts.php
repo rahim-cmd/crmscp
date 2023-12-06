@@ -27,6 +27,7 @@ class Parts extends CI_Controller
                 'p_qty'=>$this->input->post('pqty'),
                 'price'=>$this->input->post('price'),
                 'p_trim'=>$this->input->post('ptrim'),
+                'updatedBy'=>$this->session->userdata('email'),
             );
             $this->db->insert('inventory',$data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Record has been saved successfully.</div>');
@@ -58,6 +59,7 @@ class Parts extends CI_Controller
             'p_qty'=>$this->input->post('pqty'),
             'price'=>$this->input->post('price'),
             'p_trim'=>$this->input->post('ptrim'),
+            'updatedBy'=>$this->session->userdata('email'),
         );
         $this->db->update('inventory',$data,array('id'=>$id));
 		$this->session->set_flashdata('message', '<div class="alert alert-success">Record has been updated successfully.</div>');

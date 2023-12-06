@@ -18,6 +18,7 @@ class Warehousemodel extends CI_model
             'w_email'=>$wemail,
             'w_fax'=>$wfax,
             'w_agent'=>$wagent,
+            'updatedBy'=>$this->session->userdata('email'),
             'cutime'=> date('Y-m-d h:i:s')
         );
         $this->db->insert('warehousedetails', $data);
@@ -51,6 +52,7 @@ class Warehousemodel extends CI_model
             'w_email'=>$wemail,
             'w_fax'=>$wfax,
             'w_agent'=>$wagent,
+            'updatedBy'=>$this->session->userdata('email'),
             'cutime'=> date('Y-m-d h:i:s')
         );
         $data=$this->db->update('warehousedetails',$data,array('id'=>$id));
