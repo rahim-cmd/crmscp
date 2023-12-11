@@ -38,7 +38,13 @@ include('sidebar.php');
                       <label for="exampleInputConfirmPassword1">Warehouse Agent</label>
                       <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="wagent" placeholder="Warehouse Agent">
                     </div>
-                    
+                    <div class="form-group">
+                      <label for="exampleInputStatus">Status</label>
+                      <select class="form-control" name="status">
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                      </select>
+                    </div>
                     <button type="submit" name="submit" class="btn btn-primary me-2">Add Warehouse</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>

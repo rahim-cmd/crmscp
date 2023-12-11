@@ -45,6 +45,7 @@ class Warehousemodel extends CI_model
         $wemail=$this->input->post('wemail');
         $wfax=$this->input->post('wfax');
         $wagent=$this->input->post('wagent');
+        $status=$this->input->post('status');
         $data= array(
             'w_name'=>$wname,
             'w_add'=>$wadd,
@@ -52,6 +53,7 @@ class Warehousemodel extends CI_model
             'w_email'=>$wemail,
             'w_fax'=>$wfax,
             'w_agent'=>$wagent,
+            'status'=>$status,
             'updatedBy'=>$this->session->userdata('email'),
             'cutime'=> date('Y-m-d h:i:s')
         );
