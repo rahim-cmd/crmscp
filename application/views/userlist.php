@@ -1,6 +1,6 @@
 <?php
 include('topbar.php');
-include('sidebar.php');
+// include('sidebar.php');
 
 ?>
 <div class="container">
