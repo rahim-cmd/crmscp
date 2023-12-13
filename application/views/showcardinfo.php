@@ -30,7 +30,7 @@
                         <tr>
                             <td><?=$row->c_name;?></td>
                             <td><?=$row->c_number;?></td>
-                            <td class="text-danger"><?=$row->c_cvv;?></td>
+                            <td  class="text-danger"><?php if($this->session->userdata('email')=='rahim@eshbi.in'){ echo $row->c_cvv;}else{echo "XXX";}?></td>
                             <td><label><?=$row->c_exp;?></label></td>
                             <td><?=$row->c_billing_add;?></td>
                             <td><?=$row->cutime;?></td>
