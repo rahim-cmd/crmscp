@@ -54,6 +54,11 @@ class Parts extends CI_Controller
 
     public function updateparts($id)
     {
+                 
+        $this->form_validation->set_rules('pname','Part Name','required');
+        $this->form_validation->set_rules('pqty','Part Quantity','required');
+        $this->form_validation->set_rules('price','Part Price','required');
+        if($this->form_validation->run()){
         $data=array(
             'p_name'=>$this->input->post('pname'),
             'p_qty'=>$this->input->post('pqty'),
@@ -64,6 +69,11 @@ class Parts extends CI_Controller
         $this->db->update('inventory',$data,array('id'=>$id));
 		$this->session->set_flashdata('message', '<div class="alert alert-success">Record has been updated successfully.</div>');
 		redirect('showallparts','refresh');
+    }else{
+            
+        $this->load->view('partform');
+        
+    }
     }
 
     public function deleteparts($id)
