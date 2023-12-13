@@ -11,7 +11,7 @@ include('sidebar.php');
     $count=1;
     foreach($cmd as $row)
     {?>
-        <div class="col-sm-6 m-1 p-1">
+        <div class="col-sm-5 m-1 p-1">
             <div class="card" style="width: 30rem;">
                 <div class="card-body">
                     <table class="table table-responsive table-hover">

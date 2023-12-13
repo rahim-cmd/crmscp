@@ -20485,6 +20485,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+ 
 }
 @keyframes spin {
   from {
@@ -30958,11 +30959,13 @@ div.tagsinput span.tag a {
   -ms-animation-fill-mode: both;
   -o-animation-fill-mode: both;
   animation-fill-mode: both;
+  display: none !important;
 }
 #settings-trigger i {
   color: #ffffff;
   font-size: 1rem;
   line-height: 1rem;
+  
 }
 .rtl #settings-trigger {
   right: auto;

@@ -14,12 +14,12 @@ class Warehouse extends CI_Controller
     }
     public function insertwhouse()
     {
-        $this->form_validation->set_rules('wname','Warehouse Name','required|min[4]');
-        $this->form_validation->set_rules('wadd','Warehouse Address','required|min[5]');
-        $this->form_validation->set_rules('wphone','Warehouse Phone','required');
+        $this->form_validation->set_rules('wname','Warehouse Name','required|min_length[4]');
+        $this->form_validation->set_rules('wadd','Warehouse Address','required|min_length[5]');
+        $this->form_validation->set_rules('wphone','Warehouse Phone','required|numeric');
         $this->form_validation->set_rules('wemail','Warehouse Email','required|valid_email');
         $this->form_validation->set_rules('wfax','Warehouse Fax','numeric');
-        $this->form_validation->set_rules('wagent','Warehouse Agent','required');
+        $this->form_validation->set_rules('wagent','Warehouse Agent','required|alpha');
         $this->form_validation->set_rules('status','Status','required');
         if($this->form_validation->run()==true)
         {
@@ -51,12 +51,12 @@ class Warehouse extends CI_Controller
     }
     public function updatewarehouse($id)
     {
-        $this->form_validation->set_rules('wname','Warehouse Name','required|min[4]');
-        $this->form_validation->set_rules('wadd','Warehouse Address','required|min[5]');
+        $this->form_validation->set_rules('wname','Warehouse Name','required|min_length[4]');
+        $this->form_validation->set_rules('wadd','Warehouse Address','required|min_length[5]');
         $this->form_validation->set_rules('wphone','Warehouse Phone','required');
         $this->form_validation->set_rules('wemail','Warehouse Email','required|valid_email');
         $this->form_validation->set_rules('wfax','Warehouse Fax','numeric');
-        $this->form_validation->set_rules('wagent','Warehouse Agent','required');
+        $this->form_validation->set_rules('wagent','Warehouse Agent','required|alpha');
         $this->form_validation->set_rules('status','Status','required');
         if($this->form_validation->run()==true)
         {

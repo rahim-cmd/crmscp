@@ -21,8 +21,8 @@ class Bank extends CI_Controller
     public function addcardinfo(){
 
         $this->form_validation->set_rules('name','Name','required');
-        $this->form_validation->set_rules('cno','Card Number','required');
-        $this->form_validation->set_rules('cvv','CVV','required');
+        $this->form_validation->set_rules('cno','Card Number','required|numeric');
+        $this->form_validation->set_rules('cvv','CVV','required|numeric|min_length[3]|max_length[4]');
         $this->form_validation->set_rules('exp','Expiration','required');
         $this->form_validation->set_rules('billingadd','Billing Address','required');
         if($this->form_validation->run()==TRUE)
@@ -56,7 +56,13 @@ class Bank extends CI_Controller
 
     }
     public function updatecardinfo($id){
-
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('cno','Card Number','required|numeric');
+        $this->form_validation->set_rules('cvv','CVV','required|numeric|min_length[3]|max_length[4]');
+        $this->form_validation->set_rules('exp','Expiration','required');
+        $this->form_validation->set_rules('billingadd','Billing Address','required');
+        if($this->form_validation->run()==TRUE)
+        {
         $data=[
             'c_name'=>$this->input->post('name'),
             'c_number'=>$this->input->post('cno'),
@@ -69,6 +75,9 @@ class Bank extends CI_Controller
         $this->db->update('cardinfo',$data,array('id'=>$id));
         
         redirect('showcardinfo','refresh');
+    }else{
+        $this->load->view('cardinfo');
+    }
         
         
     }
