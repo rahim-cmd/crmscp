@@ -51,10 +51,21 @@ class Warehouse extends CI_Controller
     }
     public function updatewarehouse($id)
     {
-        $this->load->model('warehousemodel');
-        $data['row']=$this->warehousemodel->updatehouse($id);
-        
-        redirect('show_warehouse','refresh');
+        $this->form_validation->set_rules('wname','Warehouse Name','required|min[4]');
+        $this->form_validation->set_rules('wadd','Warehouse Address','required|min[5]');
+        $this->form_validation->set_rules('wphone','Warehouse Phone','required');
+        $this->form_validation->set_rules('wemail','Warehouse Email','required|valid_email');
+        $this->form_validation->set_rules('wfax','Warehouse Fax','numeric');
+        $this->form_validation->set_rules('wagent','Warehouse Agent','required');
+        $this->form_validation->set_rules('status','Status','required');
+        if($this->form_validation->run()==true)
+        {
+            $this->load->model('warehousemodel');
+            $data['row']=$this->warehousemodel->updatehouse($id);
+            redirect('show_warehouse','refresh');
+        }else{
+            $this->load->view('warehouse_list');
+        }
         
                 
     }
