@@ -83,9 +83,10 @@ class Bank extends CI_Controller
     }
     public function delcardinfo($id)
     {
+        
         $this->db->delete('cardinfo',array('id'=>$id));
-        
         redirect('showcardinfo','refresh');
-        
+
+               
     }
 }

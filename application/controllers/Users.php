@@ -15,7 +15,7 @@ class Users extends CI_Controller{
 
     public function newuser(){
         $this->form_validation->set_rules('email','Email','required');
-        $this->form_validation->set_rules('password','Password','required|min[6]');
+        $this->form_validation->set_rules('password','Password','required|min_length[6]');
         $this->form_validation->set_rules('name','Name','required');
         $this->form_validation->set_rules('role','Role','required');
         if($this->form_validation->run())
@@ -50,11 +50,19 @@ class Users extends CI_Controller{
         $this->load->view('update_user',$data);
     }
     public function updateuser($id){
+
+        $this->form_validation->set_rules('email','Email','required');
+        $this->form_validation->set_rules('password','Password','required|min_length[6]');
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('role','Role','required');
+        if($this->form_validation->run())
+        {
         $this->load->model('userlist');
         $data['row']=$this->userlist->update_record($id);
-        
-        
         redirect('dashboard','refresh');
+        }else{
+            $this->load->view('add_user');
+        }
         
         
     }

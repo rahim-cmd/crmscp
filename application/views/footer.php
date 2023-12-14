@@ -48,6 +48,9 @@
 <script src="<?php echo base_url();?>js/jquery.cookie.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>js/dashboard.js"></script>
 <!-- <script src="../../js/Chart.roundedBarCharts.js"></script> -->
+
+<!-- jquery cdn link -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <!-- End custom js for this page-->
 </body>
 

@@ -45,8 +45,8 @@
         <div class="navbar-menu-wrapper d-flex align-items-top">
             <ul class="navbar-nav">
                 <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                    <p class="welcome-text">Welcome , <span class="text-black fw-bold"><?php echo
-            $this->session->userdata('email');
+                    <p class="text-lg">Welcome , <span class="text-black fw-bold"><?php echo
+            strtoupper($this->session->userdata('email'));
             ?></span></p>
                     
                 </li>

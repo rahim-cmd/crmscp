@@ -34,10 +34,8 @@
                             <td><label><?=$row->c_exp;?></label></td>
                             <td><?=$row->c_billing_add;?></td>
                             <td><?=$row->cutime;?></td>
-                            <td><a href="<?= base_url('modifycard/').$row->id;?>"><strong
-                                        class="btn btn-sm btn-primary"><i class="ri-edit-box-fill"></i>Edit</strong></a></td>
-                            <td><a href="<?= base_url('delcard/').$row->id;?>"><strong
-                                        class="btn btn-sm btn-danger"><i class="ri-delete-bin-5-fill"></i>Delete</strong></a></td>
+                            <td><a href="<?= base_url('modifycard/').$row->id;?>">✏️<span class="text-warning font-weight-bold">Edit</span></a></td>
+                            <td><a href="<?= base_url('delcard/').$row->id;?>" onclick="return confirm('Are you sure you want to delete it?')">🗑️<span class="text-danger font-weight-bold">Trash</span></a></td>
 
                         </tr>
 

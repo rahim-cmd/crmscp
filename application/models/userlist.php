@@ -5,7 +5,7 @@ class Userlist extends CI_Model {
     public $email;
     public $password;
     public $name;
-    public $admin;
+    public $role;
     public $cutime;
     public function __construct(){
         parent::__construct();
@@ -38,7 +38,7 @@ class Userlist extends CI_Model {
         $this->email    = $_POST['email']; // to update data of invoice user table
         $this->password  = $_POST['password'];
         $this->name  = $_POST['name'];
-        $this->admin=$_POST['role'];
+        $this->role=$_POST['role'];
         $this->cutime     = date('Y-m-d h:i:s');
         $this->db->update('users', $this,['id' => $id]);
     }

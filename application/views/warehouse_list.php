@@ -73,7 +73,7 @@ include('sidebar.php');
                             <td><a href="<?php echo base_url('modiwarehouse/').$row->id;?>"><strong
                                         class="btn btn-sm btn-primary"><i class="ri-edit-box-fill"></i>Edit</strong></a>
                             </td>
-                            <td><a href="<?php echo base_url('delwarehouse/').$row->id;?>"><strong
+                            <td><a href="<?php echo base_url('delwarehouse/').$row->id;?>" onclick="return confirm('Are you sure you want to delete it?')"><strong
                                         class="btn btn-sm btn-danger"><i
                                             class="ri-delete-bin-6-fill"></i>Delete</strong></a></td>
                         </tr>

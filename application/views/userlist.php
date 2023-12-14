@@ -40,12 +40,12 @@ include('sidebar.php');
                 <td><?php echo $row->email;?></td>
                 <td><?php echo $row->password;?></td>
                 <td><?php echo $row->name;?></td>
-                <td><?php echo ($row->admin==1)? "Admin": "User";?>
+                <td><?php echo $row->role;?>
                             
                 </td>
                 <td><?php echo $row->cutime;?></td>
-                <td><a href="<?php echo base_url('users/update_entry/').$row->id;?>"><i class="ri-edit-box-line"></i></a></td>
-                <td><a href="<?php echo base_url('users/del_entry/').$row->id;?>"><i class="ri-delete-bin-6-line"></i></a></td>
+                <td><a href="<?php echo base_url('users/update_entry/').$row->id;?>">✏️<span class="text-warning font-weight-bold">Edit</span></a></td>
+                <td><a href="<?php echo base_url('users/del_entry/').$row->id;?>">🗑️<span class="text-danger font-weight-bold">Trash</span></a></td>
             </tr>
             <?php }  
                         ?>
@@ -79,7 +79,7 @@ include('sidebar.php');
             <td><?php echo $row->email;?></td>
             <td><?php echo $row->password;?></td>
             <td><?php echo $row->name;?></td>
-            <td><?php echo ($row->admin==1)? "Admin": "User";?></td>
+            <td><?php echo $row->role;?></td>
             <td><?php echo $row->cutime;?></td>
             <td><a href="<?php echo base_url('users/update_entry/').$row->id;?>"><i class="ri-edit-box-line"></i></a></td>
             

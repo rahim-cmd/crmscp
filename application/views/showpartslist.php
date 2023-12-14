@@ -52,10 +52,8 @@ foreach($parts as $row)
                                 <?=  $row->p_trim;?>
                             </td>
                             <td>
-                                <a href="<?= base_url('editparts/').$row->id;?>"><span class="btn btn-sm btn-primary"><i
-                                            class="ri-edit-box-fill"></i>Edit</span></a>
-                                <a href="<?= base_url('delpart/').$row->id;?>"><span class="btn btn-sm btn-danger"><i
-                                            class="ri-delete-bin-6-fill"></i>Delete</span></a>
+                                <a href="<?= base_url('editparts/').$row->id;?>"><span class="text-warning">✏️Edit</span></a>&nbsp;
+                                <a href="<?= base_url('delpart/').$row->id;?>" onclick="return confirm('Are you sure you want to delete it?')"><span class="text-danger">🗑️Delete</span></a>
                             </td>
                         </tr>
                     </tbody>

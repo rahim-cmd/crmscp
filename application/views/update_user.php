@@ -23,13 +23,13 @@ include('sidebar.php');
             <?php if($this->session->userdata('email')!="rahim@eshbi.in"){?>
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
-                <input type="text" class="form-control" name="role" id="org" value="<?php echo $row->admin?>" readonly>
+                <input type="text" class="form-control" name="role" id="org" value="<?php echo $row->role?>" readonly>
             </div>
                 <?php
             }else{?>
                 <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
-                <input type="text" class="form-control" name="role" id="org" value="<?php echo $row->admin?>">
+                <input type="text" class="form-control" name="role" id="org" value="<?php echo $row->role?>">
             </div>
             <?php
             }
