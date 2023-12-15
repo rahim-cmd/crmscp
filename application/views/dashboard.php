@@ -1,7 +1,10 @@
-<?php include('topbar.php');?>
-<?php include('sidebar.php');?>
-<?php include('subbar.php');?>
-<!-- partial -->
+<?php 
+    include('topbar.php');
+    include('sidebar.php');
+    
 
-<!-- content-wrapper ends -->
-<?php include('footer.php');?>
+    include('footer.php');
+
+
+
+?>

@@ -45,7 +45,7 @@ include('sidebar.php');
                 </td>
                 <td><?php echo $row->cutime;?></td>
                 <td><a href="<?php echo base_url('users/update_entry/').$row->id;?>">✏️<span class="text-warning font-weight-bold">Edit</span></a></td>
-                <td><a href="<?php echo base_url('users/del_entry/').$row->id;?>">🗑️<span class="text-danger font-weight-bold">Trash</span></a></td>
+                <td><a href="<?php echo base_url('users/del_entry/').$row->id;?>" onclick="return confirm('Are you sure you want to delete it?')">🗑️<span class="text-danger font-weight-bold">Trash</span></a></td>
             </tr>
             <?php }  
                         ?>

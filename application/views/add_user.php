@@ -25,7 +25,7 @@ include('sidebar.php');
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Role</label>
-                <input type="text" class="form-control" name="role" id="org" autocomplete="off" placeholder="Organisation Name">
+                <input type="text" class="form-control" name="role" id="role" autocomplete="off" placeholder="Role">
                 <span class="text-danger"><?php echo form_error('role');?></span>
             </div>
            

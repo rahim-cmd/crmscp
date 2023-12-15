@@ -3,17 +3,20 @@ defined('BASEPATH') OR exit('DIRECT ACCESS PROHIBITED');
 
 class Users extends CI_Controller{
     
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->helper('form');
     }    
     
-    public function index(){
+    public function index()
+    {
         $this->load->view('add_user');
     }
 
-    public function newuser(){
+    public function newuser()
+    {
         $this->form_validation->set_rules('email','Email','required');
         $this->form_validation->set_rules('password','Password','required|min_length[6]');
         $this->form_validation->set_rules('name','Name','required');
@@ -24,14 +27,16 @@ class Users extends CI_Controller{
                 'email'=>$this->input->post('email'),
                 'password'=>$this->input->post('password'),
                 'name'=>$this->input->post('name'),
-                'admin'=>$this->input->post('role'),
+                'role'=>$this->input->post('role'),
                 'cutime'=>$this->cutime = date('Y-m-d h:i:s')
             );
 
                 $this->db->insert('users', $data);
                 redirect('showuser','refresh');
             
-        }else{
+        }
+        else
+        {
             $this->load->view('add_user');
         }
     }
@@ -49,7 +54,8 @@ class Users extends CI_Controller{
         $data['row']=$this->userlist->edit_entry($id);
         $this->load->view('update_user',$data);
     }
-    public function updateuser($id){
+    public function updateuser($id)
+    {
 
         $this->form_validation->set_rules('email','Email','required');
         $this->form_validation->set_rules('password','Password','required|min_length[6]');
@@ -60,7 +66,9 @@ class Users extends CI_Controller{
         $this->load->model('userlist');
         $data['row']=$this->userlist->update_record($id);
         redirect('dashboard','refresh');
-        }else{
+        }
+        else
+        {
             $this->load->view('add_user');
         }
         
