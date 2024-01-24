@@ -60,10 +60,12 @@ $route['dashboard'] = "dashboard";
 $route['login/dashboard'] = "dashboard";
 
 // order related routes
-$route['orderform'] = "order";
-$route['showform'] = "order/showorder";
-
-// part related routes
+$route['order'] = "welcome/myorders";
+$route['showorder'] = "welcome/showorder";
+$route['addorderdetails']="welcome/insertorderdetails";
+$route['showfulldetails/(:any)']="welcome/fetchFullOrderDetails/$1";
+$route['showarehouseforflags']="flags";
+// Inventory related routes
 $route['addparts']="parts";
 $route['addpart']="parts/addpart";
 $route['showallparts']="parts/showparts";
@@ -80,12 +82,19 @@ $route['users/update_user/(:any)']="users/updateuser/$1";
 $route['users/del_entry/(:any)']="users/deleteuser/$1";
 
 // warehouse related routes
-$route['addwarehouse']="warehouse";
-$route['addwarehouse/insert']="warehouse/insertwhouse";
+$route['warehouse']="warehouse";
+$route['warehouse/wareinfo/(:any)']="warehouse/wareinfo/$1";
+$route['new_warehouse']="warehouse/newhouse";
 $route['show_warehouse']="warehouse/showwarehouse";
 $route['modiwarehouse/(:any)']="warehouse/editwarehouse/$1";
 $route['update/(:any)']="warehouse/updatewarehouse/$1";
 $route['delwarehouse/(:any)']="warehouse/delwarehouse/$1";
+
+//palced order with warehouse details
+$route['showplacedorder']="warehouse/showorderplaced";
+$route['warehouse/editwarehouseinfo/(:any)']="warehouse/editwarehouseinfo/$1";
+$route['showordersforexecution']="warehouse/fetchorderdetails";
+$route['order/updateorders/(:any)']="order/updateorders/$1";
 
 
 //card info routes
@@ -97,5 +106,12 @@ $route['modifycardinfo/(:any)']="bank/updatecardinfo/$1";
 $route['delcard/(:any)']="bank/delcardinfo/$1";
 
 
+//part listing routes
+$route['addlistpart']="partlist";
+$route['showlistedpart']="partlist/showpartlisted";
+$route['editpartlisting/(:any)']="partlist/editpartlisted/$1";
+$route['updatepartlisted/(:any)']="partlist/updatepartlisted/$1";
 
+//flags and followups related routes
+$route['showordersforfollowups']='flags/showflags';
 

@@ -1,20 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-class Dashboard extends CI_Controller
+Class Dashboard extends CI_Controller
 {
     public function index()
     {
-        if($this->session->userdata('email')!='')
-        {
-            $this->load->view('dashboard');
-        }
-        else{
+        $data['dat']=$this->db->get('orderinfo')->num_rows();
 
-            $this->load->view('login');
-        }
-        
+        $this->load->model('dashboardmodel');
+        $data['rec']=$this->dashboardmodel->dateviceorders();
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('dashboard',$data);
+        $this->load->view('footer');
     }
 }
-
-
 ?>

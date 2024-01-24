@@ -6,7 +6,8 @@ class Userlist extends CI_Model {
     public $password;
     public $name;
     public $role;
-    public $cutime;
+    public $sudoname;
+    
     public function __construct(){
         parent::__construct();
     }
@@ -39,14 +40,13 @@ class Userlist extends CI_Model {
         $this->password  = $_POST['password'];
         $this->name  = $_POST['name'];
         $this->role=$_POST['role'];
-        $this->cutime     = date('Y-m-d h:i:s');
+        $this->sudoname=$_POST['sudoname'];
         $this->db->update('users', $this,['id' => $id]);
     }
     public function del_entry($id)
     {
         $this->db->where('id', $id);
         $this->db->delete('users');
-        
         redirect('dashboard','refresh');
         
     }

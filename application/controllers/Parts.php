@@ -1,87 +1,60 @@
 <?php
-defined('BASEPATH') OR exit('DIRECT ACCESS PROHIBITED');
-
 class Parts extends CI_Controller
 {
-
-    function __construct() {
-        parent::__construct();
+	public function __Construct()
+	{
+		parent::__construct();
+		$this->load->model('partlist');
+		$this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->helper('form');
-    }    
-    public function index()
-    {
-        $this->load->view('partform');
-    }
+	}
+	public function index()
+	{
+		$this->load->view('topbar');
+		$this->load->view('sidebar');
+		$this->load->view('parts/addparts_form');
+		$this->load->view('footer');
 
-    public function addPart()
-    {
-                
-        $this->form_validation->set_rules('pname','Part Name','required');
-        $this->form_validation->set_rules('pqty','Part Quantity','required|numeric');
-        $this->form_validation->set_rules('price','Part Price','required');
-        if($this->form_validation->run())
-        {
-            $data=array(
-                'p_name'=>$this->input->post('pname'),
-                'p_qty'=>$this->input->post('pqty'),
-                'price'=>$this->input->post('price'),
-                'p_trim'=>$this->input->post('ptrim'),
-                'updatedBy'=>$this->session->userdata('email'),
-            );
-            $this->db->insert('inventory',$data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success">Record has been saved successfully.</div>');
-            redirect('showallparts','refresh');
-        }else{
-            
-            $this->load->view('partform');
-            
-        }
-    }
-    public function showparts()
-    {
-        $this->load->model('partlist');
-        $dt['parts']=$this->partlist->partshow();
-        $this->load->view('showpartslist',$dt);
-    }
 
-    public function editparts($id)
-    {
-        $this->load->model('partlist');
-        $data['row']=$this->partlist->editpartlist($id);
-        $this->load->view('modipartslist',$data);
-    }
+	}
+	public function addparts()
+	{
+		$this->form_validation->set_rules('partname','Part Name','required');
+		$this->form_validation->set_rules('quantity','Quantity','required');
+		$this->form_validation->set_rules('price','Price','required|numeric');
+		if($this->form_validation->run()){
 
-    public function updateparts($id)
-    {
-                 
-        $this->form_validation->set_rules('pname','Part Name','required');
-        $this->form_validation->set_rules('pqty','Part Quantity','required|numeric');
-        $this->form_validation->set_rules('price','Part Price','required');
-        if($this->form_validation->run()){
-        $data=array(
-            'p_name'=>$this->input->post('pname'),
-            'p_qty'=>$this->input->post('pqty'),
-            'price'=>$this->input->post('price'),
-            'p_trim'=>$this->input->post('ptrim'),
-            'updatedBy'=>$this->session->userdata('email'),
-        );
-        $this->db->update('inventory',$data,array('id'=>$id));
-		$this->session->set_flashdata('message', '<div class="alert alert-success">Record has been updated successfully.</div>');
-		redirect('showallparts','refresh');
-    }else{
-            
-        $this->load->view('partform');
-        
-    }
-    }
+			$data=array(
+				'p_name'=>$this->input->post('partname'),
+				'p_qty'=>$this->input->post('quantity'),
+				'p_trim'=>$this->input->post('trim'),
+				'price'=>$this->input->post('price'),
+				'updatedBy'=>$this->session->userdata('email'),
+			);
+			$data=$this->db->insert('inventory',$data);
+			if($data)
+			{
+				echo "<script>alert('Part Added Successfully');history.go(-2);</script>";
+			}
+			else
+			{
+				echo "<script>alert('Part Not Added! Something went wrong.');history.go(-2);</script>";
+			}
 
-    public function deleteparts($id)
-    {
-        $this->load->model('partlist');
-        $this->partlist->delpartlist($id);
-        
-        redirect('showallparts','refresh');
-        
-    }
+		}else{
+			$this->index();
+		}
+
+	}
+	public function editparts($id)
+	{
+		$data['rec']=$this->db->get_where('inventory',array('id'=>$id));
+		$this->load->view('topbar');
+		$this->load->view('sidebar');
+		$this->load->view('parts/editparts_form',$data);
+		$this->load->view('footer');
+
+	}
 }
+
+?>

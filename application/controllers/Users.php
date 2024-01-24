@@ -8,11 +8,15 @@ class Users extends CI_Controller{
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->helper('form');
+        $this->load->model('userlist');
     }    
     
     public function index()
     {
-        $this->load->view('add_user');
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('user/add_user');
+        $this->load->view('footer');
     }
 
     public function newuser()
@@ -21,6 +25,7 @@ class Users extends CI_Controller{
         $this->form_validation->set_rules('password','Password','required|min_length[6]');
         $this->form_validation->set_rules('name','Name','required');
         $this->form_validation->set_rules('role','Role','required');
+        $this->form_validation->set_rules('sudoname','Sudo Name','required');
         if($this->form_validation->run())
         {
             $data=array(
@@ -28,31 +33,46 @@ class Users extends CI_Controller{
                 'password'=>$this->input->post('password'),
                 'name'=>$this->input->post('name'),
                 'role'=>$this->input->post('role'),
-                'cutime'=>$this->cutime = date('Y-m-d h:i:s')
+                'sudoname'=>$this->input->post('sudoname'),
+                
             );
 
-                $this->db->insert('users', $data);
-                redirect('showuser','refresh');
+                $status=$this->db->insert('users', $data);
+                if($status == true){
+
+                    echo "<script>alert('Data Inserted')</script>";
+                    $this->showallusers();
+                }else{
+                    echo "<script>alert('Data Not Inserted')</script>";
+                    $this->index();
+                }
+                
             
         }
         else
         {
-            $this->load->view('add_user');
+            $this->index();
         }
     }
 
     public function showuser()
     {
         
-        $this->load->model('userlist');
+        
         $data['qury']=$this->userlist->get_entries();
-        $this->load->view('userlist',$data);
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('user/userlist',$data);
+        $this->load->view('footer');
     }
 
     public function edituser($id){
-        $this->load->model('userlist');
+        
         $data['row']=$this->userlist->edit_entry($id);
-        $this->load->view('update_user',$data);
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('user/update_user',$data);
+        $this->load->view('footer');
     }
     public function updateuser($id)
     {
@@ -61,31 +81,37 @@ class Users extends CI_Controller{
         $this->form_validation->set_rules('password','Password','required|min_length[6]');
         $this->form_validation->set_rules('name','Name','required');
         $this->form_validation->set_rules('role','Role','required');
+        $this->form_validation->set_rules('sudoname','Sudo Name','required');
         if($this->form_validation->run())
         {
-        $this->load->model('userlist');
-        $data['row']=$this->userlist->update_record($id);
-        redirect('dashboard','refresh');
+            
+            $data['row']=$this->userlist->update_record($id);
+            redirect('showuser','refresh');
         }
         else
         {
-            $this->load->view('add_user');
+            $this->load->view('topbar');
+            $this->load->view('sidebar');
+            $this->load->view('user/add_user');
+            $this->load->view('footer');
         }
         
         
     }
     public function showallusers()
     {
-        $this->load->model('userlist');
+     
         $data['qury']=$this->userlist->get_allentries();
-        $this->load->view('userlist',$data);
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('user/userlist',$data);
+        $this->load->view('footer');
     }
     
     public function deleteuser($id)
     {
-        $this->load->model('userlist');
-        $this->userlist->del_entry($id);
         
+        $this->userlist->del_entry($id);
         redirect('showallusers','refresh');
         
     }

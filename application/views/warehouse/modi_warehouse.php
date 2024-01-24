@@ -1,0 +1,76 @@
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Elements</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url('/');?>">Home</a></li>
+                <li class="breadcrumb-item">order</li>
+                <li class="breadcrumb-item active">Elements</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Warehouse form</h4>
+                        <p class="card-description">
+                            Warehouse form layout
+                        </p>
+                        <form class="forms-sample" action="<?php echo base_url('update/').$row->id;?>" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Warehouse Name</label>
+                                <input type="text" class="form-control" id="exampleInputwname" name="wname"
+                                    value="<?=  $row->w_name; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Warehouse address</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="wadd"
+                                    value="<?=  $row->w_add;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Warehouse Phone</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" name="wphone"
+                                    value="<?=  $row->w_phone;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">Warehouse Email</label>
+                                <input type="email" class="form-control" id="exampleInputConfirmPassword1" name="wemail"
+                                    value="<?=  $row->w_email;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">Warehouse Fax</label>
+                                <input type="number" class="form-control" id="exampleInputConfirmPassword1" name="wfax"
+                                    value="<?=  $row->w_fax;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputConfirmPassword1">Warehouse Agent</label>
+                                <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="wagent"
+                                    value="<?=  $row->w_agent;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputStatus">Status</label>
+                                <select class="form-control" name="status">
+                                    <option placeholder="<?= $row->status?>" value="<?= $row->status?>"><?php  if($row->status==true){
+                                    echo "<span class='text-success'>Active</span>";
+                                    }else{
+                                        echo "<span id='bglal' class='text-danger'>Inactive</span>";
+                                    }?></option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" name="submit" class="btn btn-primary me-2">Update Warehouse</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            

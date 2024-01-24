@@ -7,7 +7,7 @@ class LoginModel extends CI_model {
         $query=$this->db->get('users');
         if($query->num_rows()>0)
         {
-            return true;
+            return $query->row();
         }
         else
         {

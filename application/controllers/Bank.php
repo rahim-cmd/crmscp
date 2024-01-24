@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Bank extends CI_Controller
 {
     public function __Construct()
@@ -9,13 +10,19 @@ class Bank extends CI_Controller
     }
     public function index()
     {
-        $this->load->view('cardinfo');
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('cardinfo/cardinfo');
+        $this->load->view('footer');
     }
     public function showinfo()
     {
         $this->load->model('cardinfo');
         $data['cmd']=$this->cardinfo->showinfo();
-        $this->load->view('showcardinfo',$data);
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('cardinfo/showcardinfo',$data);
+        $this->load->view('footer');
 
     }
     public function addcardinfo(){
@@ -40,7 +47,10 @@ class Bank extends CI_Controller
             $this->db->insert('cardinfo',$data);
             redirect('showcardinfo','refresh');
         }else{
-            $this->load->view('cardinfo');
+            $this->load->view('topbar');
+            $this->load->view('sidebar');
+            $this->load->view('cardinfo/cardinfo');
+            $this->load->view('footer');
         }
         
 
@@ -52,7 +62,10 @@ class Bank extends CI_Controller
     {
         $this->load->model('cardinfo');
         $data['row']=$this->cardinfo->editinfo($id);
-        $this->load->view('modi_cardinfo',$data);
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('cardinfo/modi_cardinfo',$data);
+        $this->load->view('footer');
 
     }
     public function updatecardinfo($id){
@@ -76,7 +89,10 @@ class Bank extends CI_Controller
         
         redirect('showcardinfo','refresh');
     }else{
-        $this->load->view('cardinfo');
+        $this->load->view('topbar');
+        $this->load->view('sidebar');
+        $this->load->view('cardinfo/cardinfo');
+        $this->load->view('footer');
     }
         
         

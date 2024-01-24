@@ -2,276 +2,111 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>storecarpart</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/feather/feather.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/typicons/typicons.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="<?php echo base_url();?>vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/js/select.dataTables.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="<?php echo base_url();?>/css/vertical-layout-light/style.css">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="<?php echo base_url();?>/images/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Dashboard SCP</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="<?php echo base_url();?>assets/img/favicon.png" rel="icon">
+    <link href="<?php echo base_url();?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-            <div class="me-3">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-                    <span class="icon-menu"></span>
-                </button>
-            </div>
-            <div>
-                <a class="navbar-brand brand-logo" href="<?php echo base_url();?>dashboard">
-                    <img src="<?php echo base_url();?>images/scp_logo.png" alt="logo" />
-                </a>
-                <a class="navbar-brand brand-logo-mini" href="<?php echo base_url();?>dashboard">
-                    <img src="<?php echo base_url();?>images/scp_logo.png" alt="logo" />
-                </a>
-            </div>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-top">
-            <ul class="navbar-nav">
-                <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                    <p class="text-lg">Welcome , <span class="text-black fw-bold"><?php echo
-            strtoupper($this->session->userdata('email'));
-            ?></span></p>
-                    
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-            
-                <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                    <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="img-xs rounded-circle" src="<?php echo base_url();?>images/faces/face8.jpg"
-                            alt="Profile image"> </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="<?php echo base_url();?>images/faces/face8.jpg"
-                                alt="Profile image">
-                            <p class="mb-1 mt-3 font-weight-semibold"><?php echo
-            $this->session->userdata('email');?></p>
 
-                        </div>
-                        <a class="dropdown-item" href="<?php echo base_url();?>showuser"><i
-                                class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile
-                            <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                            Messages</a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                            Activity</a>
-                        <a class="dropdown-item"><i
-                                class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-                        <a class="dropdown-item" href="<?php echo base_url();?>logout"><i
-                                class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
-                    </div>
-                </li>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="<?php echo base_url('/');?>" class="logo d-flex align-items-center">
+                <img src="<?php echo base_url();?>assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">SCP</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+    
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="<?php echo base_url();?>assets/img/profile-img.jpg" alt="Profile"
+                            class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">
+
+                            <?php  
+                                if($this->session->userdata('name')!="")
+                                {
+                                    echo $this->session->userdata('name');
+                                }else{
+
+                                    redirect('login','refresh');
+                                }
+                        ?>
+        
+                        </span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="<?= base_url('showuser')?>">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-person"></i>
+                                <span class="text-primary"><?php echo $this->session->userdata('role');?></span>
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center"
+                                href="<?php echo base_url('login/logout');?>">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                data-bs-toggle="offcanvas">
-                <span class="mdi mdi-menu"></span>
-            </button>
-        </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_settings-panel.html -->
-        <div class="theme-setting-wrapper">
-            <div id="settings-trigger"><i class="ti-settings"></i></div>
-            <div id="theme-settings" class="settings-panel">
-                <i class="settings-close ti-close"></i>
-                <p class="settings-heading">SIDEBAR SKINS</p>
-                <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                    <div class="img-ss rounded-circle bg-light border me-3"></div>Light
-                </div>
-                <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                    <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-                </div>
-                <p class="settings-heading mt-2">HEADER SKINS</p>
-                <div class="color-tiles mx-0 px-4">
-                    <div class="tiles success"></div>
-                    <div class="tiles warning"></div>
-                    <div class="tiles danger"></div>
-                    <div class="tiles info"></div>
-                    <div class="tiles dark"></div>
-                    <div class="tiles default"></div>
-                </div>
-            </div>
-        </div>
-        <div id="right-sidebar" class="settings-panel">
-            <i class="settings-close ti-close"></i>
-            <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="todo-tab" data-bs-toggle="tab" href="#todo-section" role="tab"
-                        aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="chats-tab" data-bs-toggle="tab" href="#chats-section" role="tab"
-                        aria-controls="chats-section">CHATS</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="setting-content">
-                <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
-                    aria-labelledby="todo-section">
-                    <div class="add-items d-flex px-3 mb-0">
-                        <form class="form w-100">
-                            <div class="form-group d-flex">
-                                <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                                <button type="submit" class="add btn btn-primary todo-list-add-btn"
-                                    id="add-task">Add</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="list-wrapper px-3">
-                        <ul class="d-flex flex-column-reverse todo-list">
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Team review meeting at 3.00 PM
-                                    </label>
-                                </div>
-                                <i class="remove ti-close"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Prepare for presentation
-                                    </label>
-                                </div>
-                                <i class="remove ti-close"></i>
-                            </li>
-                            <li>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox">
-                                        Resolve all the low priority tickets due today
-                                    </label>
-                                </div>
-                                <i class="remove ti-close"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked>
-                                        Schedule meeting for next week
-                                    </label>
-                                </div>
-                                <i class="remove ti-close"></i>
-                            </li>
-                            <li class="completed">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="checkbox" type="checkbox" checked>
-                                        Project review
-                                    </label>
-                                </div>
-                                <i class="remove ti-close"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <h4 class="px-3 text-muted mt-5 fw-light mb-0">Events</h4>
-                    <div class="events pt-4 px-3">
-                        <div class="wrapper d-flex mb-2">
-                            <i class="ti-control-record text-primary me-2"></i>
-                            <span>Feb 11 2018</span>
-                        </div>
-                        <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-                        <p class="text-gray mb-0">The total number of sessions</p>
-                    </div>
-                    <div class="events pt-4 px-3">
-                        <div class="wrapper d-flex mb-2">
-                            <i class="ti-control-record text-primary me-2"></i>
-                            <span>Feb 7 2018</span>
-                        </div>
-                        <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-                        <p class="text-gray mb-0 ">Call Sarah Graves</p>
-                    </div>
-                </div>
-                <!-- To do section tab ends -->
-                <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
-                        <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                        <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 fw-normal">See
-                            All</small>
-                    </div>
-                    <ul class="chat-list">
-                        <li class="list active">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face1.jpg"
-                                    alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Thomas Douglas</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">19 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face2.jpg"
-                                    alt="image"><span class="offline"></span></div>
-                            <div class="info">
-                                <div class="wrapper d-flex">
-                                    <p>Catherine</p>
-                                </div>
-                                <p>Away</p>
-                            </div>
-                            <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                            <small class="text-muted my-auto">23 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face3.jpg"
-                                    alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Daniel Russell</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">14 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face4.jpg"
-                                    alt="image"><span class="offline"></span></div>
-                            <div class="info">
-                                <p>James Richardson</p>
-                                <p>Away</p>
-                            </div>
-                            <small class="text-muted my-auto">2 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face5.jpg"
-                                    alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Madeline Kennedy</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">5 min</small>
-                        </li>
-                        <li class="list">
-                            <div class="profile"><img src="<?php echo base_url();?>images/faces/face6.jpg"
-                                    alt="image"><span class="online"></span></div>
-                            <div class="info">
-                                <p>Sarah Graves</p>
-                                <p>Available</p>
-                            </div>
-                            <small class="text-muted my-auto">47 min</small>
-                        </li>
-                    </ul>
-                </div>
-                <!-- chat tab ends -->
-            </div>
-        </div>
-</nav>
-        <!-- partial -->
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
